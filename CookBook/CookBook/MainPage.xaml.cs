@@ -14,5 +14,16 @@ namespace CookBook
         {
             InitializeComponent();
         }
+
+         async void OnSignUpClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Signup());
+             
+        }
+
+        async void onSignInClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Home());
+        }
     }
 }

@@ -2,9 +2,9 @@
 
 namespace CookBook
 {
-    public partial class Signup : ContentPage
+    public partial class Home : ContentPage
     {
-        public Signup()
+        public Home()
         {
             InitializeComponent();
         }
