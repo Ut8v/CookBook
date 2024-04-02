@@ -25,5 +25,7 @@ namespace CookBook
         {
             await Navigation.PushAsync(new Home());
         }
+
+        
     }
 }

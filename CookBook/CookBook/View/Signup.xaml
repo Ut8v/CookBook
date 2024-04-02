@@ -2,15 +2,28 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CookBook.Signup"
-             BackgroundColor="#C9E5D9">
+             BackgroundColor="#C9E5D9"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="True">
 
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand" Padding="20" >
+            <Button Text="Back Arrow" Margin="0,0,280,40" BackgroundColor="Blue" Clicked="Button_Clicked"></Button>
             <Frame HasShadow="True" Padding="0" Margin="40,0,40,40" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Gray" CornerRadius="400">
                 <Image Source="Designer.png" ></Image>
             </Frame>
-            <Entry Placeholder="Email" Keyboard="Email" Margin="0,0,0,10"/>
-            <Entry Placeholder="Password" IsPassword="True" Margin="0,0,0,10"/>
+            <Frame Margin="0,0,0,0" Padding="10" CornerRadius="20">
+                <Entry Placeholder="First Name"></Entry>
+            </Frame>
+            <Frame Margin="0,0,0,0" Padding="10" CornerRadius="20">
+                <Entry Placeholder="Last Name"></Entry>
+            </Frame>
+            <Frame Margin="0,0,0,0" Padding="10" CornerRadius="20">
+                <Entry Placeholder="Email" Keyboard="Email" Margin="0,0,0,0"/>
+            </Frame>
+            <Frame Margin="0,0,0,0" Padding="10" CornerRadius="20">
+                <Entry Placeholder="Password" IsPassword="True" Margin="0,0,0,0"/>
+            </Frame>
             <Button Text="Sign Up" BackgroundColor="#2ecc71" TextColor="White"/>
         </StackLayout>
     </ContentPage.Content>
