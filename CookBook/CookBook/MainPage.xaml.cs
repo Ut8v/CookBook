@@ -23,7 +23,7 @@ namespace CookBook
 
         async void onSignInClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Home());
+            await Navigation.PushAsync(new HomePage());
         }
 
         
