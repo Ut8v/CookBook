@@ -57,6 +57,7 @@ namespace CookBook
             {
                 case "Home":
                     // Do nothing since we are already on the home page
+                    await Navigation.PushAsync(new HomePage());
                     break;
                 case "Log In/Sign Up":
                     // Navigate to the login/sign up page
