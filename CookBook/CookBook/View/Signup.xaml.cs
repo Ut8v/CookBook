@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using CookBook.Model;
+using CookBook.services;
+using Xamarin.Forms;
 
 namespace CookBook
 {
@@ -18,11 +20,35 @@ namespace CookBook
         // Navigate to the main page when the "Sign Up" button is clicked
         private async void OnSignUpClicked(object sender, System.EventArgs e)
         {
-            // Add your sign up logic here
-            // For example, you might want to validate user inputs and create a new user account
+           string Fname = FirstnameTxt.Text;
+           string Lname = LastnameTxt.Text;
+           string emailTxt = EmailTxt.Text;
+           string passwordTxt = PasswordTxt.Text;
 
-            // After sign up is successful, navigate to the main page
-            await Navigation.PushAsync(new MainPage());
+           IUserInfo userinfo = DependencyService.Get<IUserInfo>();
+
+          bool isUser = await userinfo.UserExists(emailTxt, passwordTxt);
+
+            if (isUser)
+            {
+
+            }
+            else
+            {
+                UserDB user = new UserDB()
+                {
+                    FirstName = FirstnameTxt.Text,
+                    LastName = LastnameTxt.Text,
+                    Email = EmailTxt.Text,
+                    Password = PasswordTxt.Text,
+                };
+
+                 await userinfo.AddUser(user);
+                // After sign up is successful, navigate to the main page
+                await Navigation.PushAsync(new MainPage());
+
+            }
+          
         }
 
         // Handle selection of menu items in the dropdown menu

@@ -26,12 +26,12 @@
 
             <!-- Email Entry -->
             <Frame Padding="0" Margin="0,0,0,0" CornerRadius="20" BorderColor="Chocolate">
-                <Entry Placeholder="Email" Keyboard="Email" Margin="10,10,10,10" ClearButtonVisibility="WhileEditing" IsTextPredictionEnabled="True"/>
+                <Entry x:Name="EmailTxt" Placeholder="Email" Keyboard="Email" Margin="10,10,10,10" ClearButtonVisibility="WhileEditing" IsTextPredictionEnabled="True"/>
             </Frame>
 
             <!-- Password Entry -->
             <Frame Padding="0" Margin="0,20,0,0" CornerRadius="20" BorderColor="Chocolate">
-                <Entry Placeholder="Password" IsPassword="True" Margin="10,10,10,10"/>
+                <Entry x:Name="PasswordTxt" Placeholder="Password" IsPassword="True" Margin="10,10,10,10"/>
             </Frame>
 
             <!-- Error Label -->

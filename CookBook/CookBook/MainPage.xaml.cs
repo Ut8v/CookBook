@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CookBook.services;
+using System;
 using Xamarin.Forms;
+using CookBook.Model;
 
 namespace CookBook
 {
@@ -17,7 +19,25 @@ namespace CookBook
 
         async void OnSignInClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new HomePage());
+            string emailText = EmailTxt.Text;
+            string pass = PasswordTxt.Text;
+
+            IUserInfo userInfo = DependencyService.Get<IUserInfo>();
+
+            //check if user exists
+            bool isUser = await userInfo.UserExists(emailText, pass);
+
+            Console.WriteLine(isUser);
+
+            if(isUser)
+            {
+                //if user exists take them to homepage
+                await Navigation.PushAsync(new HomePage());
+            }
+            else
+            {
+                Error.Text = "Account does not exists, Please Sign up";
+            }
         }
 
         async void OnMenuItemSelected(object sender, EventArgs e)
