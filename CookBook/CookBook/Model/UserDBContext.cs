@@ -8,7 +8,7 @@ using System.IO;
 
 namespace CookBook.Model
 {
-    internal class UserDBContext : IUserInfo
+    public class UserDBContext : IUserInfo
     {
         SQLiteAsyncConnection database;
 
@@ -21,13 +21,44 @@ namespace CookBook.Model
         //to find if user exists
         public async Task<bool> UserExists(string email, string password)
         {
-            var user = await database.Table<UserDB>().FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
-            return user != null;
+            try
+            {
+                var user = await database.Table<UserDB>().FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
+                return user != null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
         }
         //add user to the database
         public async Task AddUser(UserDB user)
         {
-            await database.InsertAsync(user);
+            try
+            {
+                await database.InsertAsync(user);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        //method to get user's first name to display if logged in
+        public async Task<string> GetFirstName(string email, string password)
+        {
+            try
+            {
+                var user = await database.Table<UserDB>().FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
+                return user.FirstName;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+
+
         }
     }
 }

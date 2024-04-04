@@ -35,7 +35,7 @@ namespace CookBook
             }
             else
             {
-                UserDB user = new UserDB()
+                var user = new UserDB()
                 {
                     FirstName = FirstnameTxt.Text,
                     LastName = LastnameTxt.Text,

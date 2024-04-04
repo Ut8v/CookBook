@@ -22,17 +22,18 @@ namespace CookBook
             string emailText = EmailTxt.Text;
             string pass = PasswordTxt.Text;
 
-            IUserInfo userInfo = DependencyService.Get<IUserInfo>();
 
+            IUserInfo userInfo = DependencyService.Get<IUserInfo>();
             //check if user exists
             bool isUser = await userInfo.UserExists(emailText, pass);
 
-            Console.WriteLine(isUser);
+            //Console.WriteLine(isUser);
 
             if(isUser)
-            {
+            { 
+                string name = await userInfo.GetFirstName(emailText, pass);
                 //if user exists take them to homepage
-                await Navigation.PushAsync(new HomePage());
+                await Navigation.PushAsync(new HomePage(true,name));
             }
             else
             {

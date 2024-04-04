@@ -10,5 +10,7 @@ namespace CookBook.services
     {
         Task<bool> UserExists(string email, string password);
         Task AddUser(UserDB user);
+
+        Task<string> GetFirstName(string email, string password);
     }
 }
