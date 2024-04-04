@@ -7,24 +7,50 @@
              NavigationPage.HasBackButton="True">
 
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand" Padding="20" >
-            <Button Text="Back Arrow" Margin="0,0,280,40" BackgroundColor="Blue" Clicked="Button_Clicked"></Button>
+        <StackLayout VerticalOptions="CenterAndExpand" Padding="20">
+            <!-- Back Arrow Button -->
+            <Button Text="Back Arrow" Margin="0,0,280,40" BackgroundColor="Blue" Clicked="OnBackButtonClicked"/>
+
+            <!-- Dropdown Menu -->
+            <StackLayout Orientation="Horizontal" BackgroundColor="#8BC34A" Padding="5">
+                <Picker Title="Menu"
+                        SelectedIndexChanged="OnMenuItemSelected">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Home</x:String>
+                            <x:String>Log In/Sign Up</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
+
+            <!-- Logo Image -->
             <Frame HasShadow="True" Padding="0" Margin="40,0,40,40" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Gray" CornerRadius="400">
                 <Image Source="Designer.png" ></Image>
             </Frame>
+
+            <!-- First Name Entry -->
             <Frame Margin="0,0,0,0" Padding="10" CornerRadius="20">
                 <Entry Placeholder="First Name"></Entry>
             </Frame>
+
+            <!-- Last Name Entry -->
             <Frame Margin="0,0,0,0" Padding="10" CornerRadius="20">
                 <Entry Placeholder="Last Name"></Entry>
             </Frame>
+
+            <!-- Email Entry -->
             <Frame Margin="0,0,0,0" Padding="10" CornerRadius="20">
                 <Entry Placeholder="Email" Keyboard="Email" Margin="0,0,0,0"/>
             </Frame>
+
+            <!-- Password Entry -->
             <Frame Margin="0,0,0,0" Padding="10" CornerRadius="20">
                 <Entry Placeholder="Password" IsPassword="True" Margin="0,0,0,0"/>
             </Frame>
-            <Button Text="Sign Up" BackgroundColor="#2ecc71" TextColor="White"/>
+
+            <!-- Sign Up Button -->
+            <Button Text="Sign Up" BackgroundColor="#2ecc71" TextColor="White" Clicked="OnSignUpClicked"/>
         </StackLayout>
     </ContentPage.Content>
 

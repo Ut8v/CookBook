@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CookBook.HomePage"
+             BackgroundColor="#C9E5D9">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Title -->
+            <StackLayout BackgroundColor="#4CAF50" Padding="10" HorizontalOptions="FillAndExpand">
+                <Label Text="CookBook" TextColor="White" FontSize="24" HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+
+            <!-- Dropdown Menu -->
+            <StackLayout Orientation="Horizontal" BackgroundColor="#8BC34A" Padding="5">
+                <Picker Title="Menu"
+                        SelectedIndexChanged="OnMenuItemSelected">  <!---->
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Home</x:String>
+                            <x:String>Log In/Sign Up</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
+
+            <!-- Your existing ListView goes here -->
+            <ListView x:Name="RecipesListView"
+          BackgroundColor="Transparent"
+          SeparatorVisibility="None"
+                      ItemSelected="OnRecipeSelected">
+           <!--ItemSelected="OnRecipeSelected"-->
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <ViewCell>
+                <StackLayout Padding="10">
+                    <Label Text="{Binding Name}" FontSize="20" />
+                    <Label Text="{Binding Description}" FontSize="14" TextColor="Gray" />
+                </StackLayout>
+            </ViewCell>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
