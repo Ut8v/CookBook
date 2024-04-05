@@ -9,11 +9,30 @@ namespace CookBook
 
     public partial class HomePage : ContentPage
 {
+        bool _isloggedin = false;
+        string _name = string.Empty;
     public HomePage()
     {
         InitializeComponent();
         LoadSampleRecipes(); // Call a method to load sample recipes into the ListView
+        LoggedinFinder(_isloggedin, _name);// method to check if logged in
+
     }
+    public HomePage(bool isLoggedin, string name)
+     {
+        InitializeComponent();
+        LoggedinFinder(isLoggedin, name); //method to check if loggedin
+
+     }
+
+     public void LoggedinFinder(bool isloggedin,string name )
+     {
+            if (isloggedin)
+            {
+                LoggedinTxt.Text = "Hello!" + name;
+
+            }
+     }
 
     private void LoadSampleRecipes()
     {

@@ -24,6 +24,8 @@
                 </Picker>
             </StackLayout>
 
+            <Label x:Name="LoggedinTxt"></Label>
+
             <!-- Your existing ListView goes here -->
             <ListView x:Name="RecipesListView"
           BackgroundColor="Transparent"
