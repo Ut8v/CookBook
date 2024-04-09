@@ -28,9 +28,10 @@ namespace CookBook
 
      public void LoggedinFinder(bool isloggedin,string name )
      {
+            name = name.ToUpper();
             if (isloggedin)
             {
-                LoggedinTxt.Text = "Hello!" + name;
+                LoggedinTxt.Text = "Hello! " + name;
 
             }
      }

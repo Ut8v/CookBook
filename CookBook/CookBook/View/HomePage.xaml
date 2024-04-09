@@ -38,7 +38,7 @@
                     <Image Source="Designer.png"></Image>
                 </Frame>
                 <!-- Label for Logged In Text -->
-                <Label x:Name="LoggedinTxt" Grid.Column="5" FontSize="20" FontAttributes="Italic" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center"/>
+                <Label x:Name="LoggedinTxt" Grid.Column="4" Grid.ColumnSpan="2" FontSize="20" FontAttributes="Italic" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center"/>
             </Grid>
 
 
