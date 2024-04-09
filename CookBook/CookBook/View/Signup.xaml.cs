@@ -1,5 +1,6 @@
 ﻿using CookBook.Model;
 using CookBook.services;
+using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 namespace CookBook
@@ -15,6 +16,11 @@ namespace CookBook
         private async void OnBackButtonClicked(object sender, System.EventArgs e)
         {
             await Navigation.PopAsync();
+        }
+
+        private async void OnSignInClicked(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
         }
 
         // Navigate to the main page when the "Sign Up" button is clicked

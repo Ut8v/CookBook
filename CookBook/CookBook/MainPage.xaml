@@ -3,15 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CookBook.MainPage"
              BackgroundColor="#E6F4F1"
-             NavigationPage.HasNavigationBar="False"
-             NavigationPage.HasBackButton="True">
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand" Padding="20">
+        <StackLayout>
             <!-- Dropdown Menu -->
-            <StackLayout Orientation="Horizontal" BackgroundColor="#8BC34A" Padding="5">
-                <Picker Title="Menu"
-                        SelectedIndexChanged="OnMenuItemSelected">
+            <Grid BackgroundColor="#8BC34A" Padding="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="menu.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="Center"  />
+
+                <!-- Picker for Menu -->
+                <Picker Grid.Row="0" Grid.Column="1" Title="Menu" SelectedIndexChanged="OnMenuItemSelected">
+                    <!---->
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Home</x:String>
@@ -19,18 +34,22 @@
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
-            </StackLayout>
+                
+                <!-- Label for Logged In Text -->
+                <Label x:Name="LoggedinTxt" Grid.Column="5" FontSize="20" FontAttributes="Italic" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center"/>
+            </Grid>
 
-            <!-- Logo Image -->
-            <Image Source="Designer.png" HeightRequest="150" HorizontalOptions="CenterAndExpand" Margin="0,20,0,40"/>
+            <Frame HasShadow="True" Padding="0" Margin="40,40,40,20" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Gray" CornerRadius="400">
+                <Image Source="Designer.png" ></Image>
+            </Frame>
 
             <!-- Email Entry -->
-            <Frame Padding="0" Margin="0,0,0,0" CornerRadius="20" BorderColor="Chocolate">
+            <Frame Padding="0" Margin="30,0,30,0" CornerRadius="20" BorderColor="Chocolate">
                 <Entry x:Name="EmailTxt" Placeholder="Email" Keyboard="Email" Margin="10,10,10,10" ClearButtonVisibility="WhileEditing" IsTextPredictionEnabled="True"/>
             </Frame>
 
             <!-- Password Entry -->
-            <Frame Padding="0" Margin="0,20,0,0" CornerRadius="20" BorderColor="Chocolate">
+            <Frame Padding="0" Margin="30,20,30,0" CornerRadius="20" BorderColor="Chocolate">
                 <Entry x:Name="PasswordTxt" Placeholder="Password" IsPassword="True" Margin="10,10,10,10"/>
             </Frame>
 
@@ -38,10 +57,10 @@
             <Label x:Name="Error" TextColor="Red" Margin="0,20,0,0" HorizontalOptions="Center"/>
 
             <!-- Sign In Button -->
-            <Button Text="Sign In" BackgroundColor="#3498db" TextColor="White" Clicked="OnSignInClicked" Margin="0,20,0,0"/>
+            <Button Text="Sign In" BackgroundColor="#3498db" TextColor="White" Clicked="OnSignInClicked" Margin="30,0,30,0"/>
 
             <!-- Sign Up Label -->
-            <Label Text="No account? Sign up" TextColor="Gray" FontSize="16" HorizontalOptions="Center" Margin="0,20,0,0">
+            <Label Text="No account? Sign up" TextColor="Gray" FontSize="16" HorizontalOptions="Center" Margin="0,0,0,0">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnSignUpClicked"/>
                 </Label.GestureRecognizers>

@@ -3,16 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CookBook.Signup"
              BackgroundColor="#C9E5D9"
-             NavigationPage.HasNavigationBar="False"
-             NavigationPage.HasBackButton="True">
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand" Padding="20">
-
+        <StackLayout>
             <!-- Dropdown Menu -->
-            <StackLayout Orientation="Horizontal" BackgroundColor="#8BC34A" Padding="5">
-                <Picker Title="Menu"
-                        SelectedIndexChanged="OnMenuItemSelected">
+            <Grid BackgroundColor="#8BC34A" Padding="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="menu.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="Center"  />
+
+                <!-- Picker for Menu -->
+                <Picker Grid.Row="0" Grid.Column="1" Title="Menu" SelectedIndexChanged="OnMenuItemSelected">
+                    <!---->
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Home</x:String>
@@ -20,35 +34,43 @@
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
-            </StackLayout>
+               
+                <!-- Label for Logged In Text -->
+                <Label x:Name="LoggedinTxt" Grid.Column="5" FontSize="20" FontAttributes="Italic" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center"/>
+            </Grid>
 
             <!-- Logo Image -->
-            <Frame HasShadow="True" Padding="0" Margin="40,0,40,40" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Gray" CornerRadius="400">
+            <Frame HasShadow="True" Padding="0" Margin="40,40,40,10" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Gray" CornerRadius="400" HeightRequest="270" WidthRequest="270">
                 <Image Source="Designer.png" ></Image>
             </Frame>
 
             <!-- First Name Entry -->
-            <Frame Margin="0,0,0,0" Padding="10" CornerRadius="20">
+            <Frame Margin="30,0,30,10" Padding="10" CornerRadius="20" BorderColor="Chocolate">
                 <Entry x:Name="FirstnameTxt" Placeholder="First Name"></Entry>
             </Frame>
 
             <!-- Last Name Entry -->
-            <Frame Margin="0,0,0,0" Padding="10" CornerRadius="20">
+            <Frame Margin="30,0,30,10" Padding="10" CornerRadius="20" BorderColor="Chocolate">
                 <Entry x:Name="LastnameTxt" Placeholder="Last Name"></Entry>
             </Frame>
 
             <!-- Email Entry -->
-            <Frame Margin="0,0,0,0" Padding="10" CornerRadius="20">
+            <Frame Margin="30,0,30,10" Padding="10" CornerRadius="20" BorderColor="Chocolate">
                 <Entry x:Name="EmailTxt" Placeholder="Email" Keyboard="Email" Margin="0,0,0,0"/>
             </Frame>
 
             <!-- Password Entry -->
-            <Frame Margin="0,0,0,0" Padding="10" CornerRadius="20">
+            <Frame Margin="30,0,30,0" Padding="10" CornerRadius="20" BorderColor="Chocolate">
                 <Entry x:Name="PasswordTxt" Placeholder="Password" IsPassword="True" Margin="0,0,0,0"/>
             </Frame>
 
             <!-- Sign Up Button -->
-            <Button Text="Sign Up" BackgroundColor="#2ecc71" TextColor="White" Clicked="OnSignUpClicked"/>
+            <Button Text="Sign Up" BackgroundColor="#2ecc71" TextColor="White" Clicked="OnSignUpClicked" Margin="30,10,30,0"/>
+            <Label Text="Has an account? Sign In" TextColor="Blue" FontSize="16" HorizontalOptions="Center" Margin="0,0,0,10">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSignInClicked"/>
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 

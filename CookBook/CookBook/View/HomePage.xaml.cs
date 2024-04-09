@@ -21,6 +21,7 @@ namespace CookBook
     public HomePage(bool isLoggedin, string name)
      {
         InitializeComponent();
+        LoadSampleRecipes();
         LoggedinFinder(isLoggedin, name); //method to check if loggedin
 
      }

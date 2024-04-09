@@ -2,19 +2,31 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CookBook.HomePage"
-             BackgroundColor="#C9E5D9">
+             BackgroundColor="#C9E5D9"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
+        
         <StackLayout>
-            <!-- Title -->
-            <StackLayout BackgroundColor="#4CAF50" Padding="10" HorizontalOptions="FillAndExpand">
-                <Label Text="CookBook" TextColor="White" FontSize="24" HorizontalOptions="CenterAndExpand" />
-            </StackLayout>
+            <Grid BackgroundColor="#8BC34A" Padding="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <!-- Dropdown Menu -->
-            <StackLayout Orientation="Horizontal" BackgroundColor="#8BC34A" Padding="5">
-                <Picker Title="Menu"
-                        SelectedIndexChanged="OnMenuItemSelected">  <!---->
+                <Image Source="menu.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="Center"  />
+
+                <!-- Picker for Menu -->
+                <Picker Grid.Row="0" Grid.Column="1" Title="Menu" SelectedIndexChanged="OnMenuItemSelected">
+                    <!---->
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Home</x:String>
@@ -22,9 +34,15 @@
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
-            </StackLayout>
+                <Frame Grid.Column="6" HeightRequest="30" WidthRequest="30" BackgroundColor="#8BC34A" CornerRadius="400" Padding="0" Margin="10,0,0,0">
+                    <Image Source="Designer.png"></Image>
+                </Frame>
+                <!-- Label for Logged In Text -->
+                <Label x:Name="LoggedinTxt" Grid.Column="5" FontSize="20" FontAttributes="Italic" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center"/>
+            </Grid>
 
-            <Label x:Name="LoggedinTxt"></Label>
+
+
 
             <!-- Your existing ListView goes here -->
             <ListView x:Name="RecipesListView"
