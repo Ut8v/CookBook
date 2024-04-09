@@ -21,15 +21,17 @@ namespace CookBook
     public HomePage(bool isLoggedin, string name)
      {
         InitializeComponent();
+        LoadSampleRecipes();
         LoggedinFinder(isLoggedin, name); //method to check if loggedin
 
      }
 
      public void LoggedinFinder(bool isloggedin,string name )
      {
+            name = name.ToUpper();
             if (isloggedin)
             {
-                LoggedinTxt.Text = "Hello!" + name;
+                LoggedinTxt.Text = "Hello! " + name;
 
             }
      }
