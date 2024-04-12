@@ -35,7 +35,7 @@ namespace CookBook
             name = name.ToUpper();
             if (isloggedin)
             {
-                LoggedinTxt.Text = "Hello! " + name;
+                LoggedInTxt.Text = "Hello! " + name;
 
             }
         }
