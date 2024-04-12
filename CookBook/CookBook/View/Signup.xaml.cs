@@ -37,6 +37,9 @@ namespace CookBook
 
             if (isUser)
             {
+                //if allready user navigate to homepage
+                string name = await userinfo.GetFirstName(emailTxt, passwordTxt);
+                await Navigation.PushAsync(new HomePage(true,name));
 
             }
             else
@@ -50,8 +53,9 @@ namespace CookBook
                 };
 
                  await userinfo.AddUser(user);
-                // After sign up is successful, navigate to the main page
-                await Navigation.PushAsync(new MainPage());
+                 string name = await userinfo.GetFirstName(emailTxt, passwordTxt);
+                // After sign up is successful, navigate to the Home page
+                await Navigation.PushAsync(new HomePage(true,name));
 
             }
           

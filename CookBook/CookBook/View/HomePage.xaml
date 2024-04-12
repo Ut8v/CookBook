@@ -24,7 +24,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Image for menu icon -->
-                <!--<Image Source="menu.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="Center"  />-->
+                <Image Source="menu.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="Center"  />
 
                 <!-- Picker for Menu -->
                 <Picker Grid.Row="0" Grid.Column="1" Title="Menu" SelectedIndexChanged="OnMenuItemSelected">
@@ -63,6 +63,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Label x:Name="DeviceInfoTxt" FontSize="15" TextColor="red"></Label>
 
         </StackLayout>
     </ContentPage.Content>
