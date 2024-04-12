@@ -1,15 +1,43 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="CookBook.View.RecipePage">
-    <ContentPage.Content>
-        <!-- Your recipe details layout goes here -->
-        <StackLayout>
-            <!-- Example content -->
-            <Label Text="Recipe Details" FontSize="Large" />
-            <!-- Add more labels, images, etc. to display recipe details -->
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CookBook.View.RecipePage"
+             Padding="10">
 
+    <ScrollView>
+        <StackLayout>
+            <!-- Recipe Name -->
+            <Label Text="{Binding Name}" FontSize="24" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Margin="0,10,0,20" />
+
+            <!-- Recipe Description -->
+            <Label Text="{Binding Description}" FontSize="18" HorizontalOptions="CenterAndExpand" Margin="0,0,0,20" />
+
+            <!-- Ingredients -->
+            <Label Text="Ingredients:" FontSize="20" FontAttributes="Bold" Margin="0,0,0,10" />
+            <ListView ItemsSource="{Binding Ingredients}" VerticalOptions="FillAndExpand" SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="5">
+                                <Label Text="{Binding}" FontSize="16" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- Instructions -->
+            <Label Text="Instructions:" FontSize="20" FontAttributes="Bold" Margin="0,10,0,10" />
+            <ListView ItemsSource="{Binding Instructions}" VerticalOptions="FillAndExpand" SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding}" FontSize="16" LineBreakMode="WordWrap" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
