@@ -33,7 +33,8 @@ namespace CookBook
             { 
                 string name = await userInfo.GetFirstName(emailText, pass);
                 //if user exists take them to homepage
-                await Navigation.PushAsync(new HomePage(true,name));
+                await Navigation.PushAsync(new HomePage()); //HomePage(true,name)
+                //@Utsav - Modified code here, I was getting errors. 
             }
             else
             {
@@ -51,7 +52,6 @@ namespace CookBook
             {
                 case "Home":
                     await Navigation.PushAsync(new HomePage());
-                    // Do nothing since we are already on the home page
                     break;
                 case "Log In/Sign Up":
                     // Navigate to the main page containing sign-in/sign-up functionality

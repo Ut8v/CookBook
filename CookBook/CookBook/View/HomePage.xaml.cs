@@ -1,57 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
-using CookBook.Models;
+using CookBook.Model;
 using CookBook.View;
-using System;
 
 namespace CookBook
 {
-
     public partial class HomePage : ContentPage
-{
-        bool _isloggedin = false;
-        string _name = string.Empty;
-    public HomePage()
     {
-        InitializeComponent();
-        LoadSampleRecipes(); // Call a method to load sample recipes into the ListView
-        LoggedinFinder(_isloggedin, _name);// method to check if logged in
+        private List<RecipeDetail> _recipeDetails; // List to store all recipe details
 
-    }
-    public HomePage(bool isLoggedin, string name)
-     {
-        InitializeComponent();
-        LoadSampleRecipes();
-        LoggedinFinder(isLoggedin, name); //method to check if loggedin
-
-     }
-
-     public void LoggedinFinder(bool isloggedin,string name )
-     {
-            name = name.ToUpper();
-            if (isloggedin)
-            {
-                LoggedinTxt.Text = "Hello! " + name;
-
-            }
-     }
-
-    private void LoadSampleRecipes()
-    {
-        // Creating sample recipes
-        var recipesList = new List<Recipe>
+        public HomePage()
         {
-            new Recipe { Name = "Spaghetti Carbonara", Description = "Classic Italian pasta dish with eggs, cheese, pancetta, and pepper." },
-            new Recipe { Name = "Chicken Alfredo", Description = "Creamy pasta dish with grilled chicken, garlic, and parmesan cheese." },
-            new Recipe { Name = "Chocolate Chip Cookies", Description = "Classic homemade cookies with chocolate chips and walnuts." },
-            new Recipe { Name = "Grilled Salmon", Description = "Healthy dish featuring grilled salmon fillets with lemon and herbs." },
-            new Recipe { Name = "Vegetable Stir-Fry", Description = "Quick and easy stir-fried vegetables with soy sauce and ginger." },
-            new Recipe { Name = "Caesar Salad", Description = "Fresh salad with romaine lettuce, croutons, parmesan cheese, and Caesar dressing." }
-        };
+            InitializeComponent();
+            LoadSampleRecipes();
+        }
 
-        // Set the list of sample recipes as the ItemsSource for the ListView
-        RecipesListView.ItemsSource = recipesList;
-    }
+        private void LoadSampleRecipes()
+        {
+            // Retrieve all recipes from the RecipeManager
+            _recipeDetails = RecipeManager.GetAllRecipes();
+
+            // Set the list of recipes as the ItemsSource for the ListView
+            RecipesListView.ItemsSource = _recipeDetails;
+        }
 
         // Method to handle item selection in the ListView
         async void OnRecipeSelected(object sender, SelectedItemChangedEventArgs e)
@@ -59,9 +31,13 @@ namespace CookBook
             if (e.SelectedItem == null)
                 return;
 
-            // Navigate to the specific recipe page passing the selected recipe as parameter
-            var selectedRecipe = e.SelectedItem as Recipe;
-            await Navigation.PushAsync(new RecipePage());
+            // Navigate to the RecipePage and pass the selected recipe details as a parameter
+            var selectedRecipe = e.SelectedItem as RecipeDetail;
+
+            // Create a new instance of the RecipePage and set its BindingContext to the selected recipe
+            var recipePage = new RecipePage();
+            recipePage.BindingContext = selectedRecipe;
+            await Navigation.PushAsync(recipePage);
 
             // Deselect item
             RecipesListView.SelectedItem = null;
@@ -77,7 +53,6 @@ namespace CookBook
             switch (selectedOption)
             {
                 case "Home":
-                    // Do nothing since we are already on the home page
                     await Navigation.PushAsync(new HomePage());
                     break;
                 case "Log In/Sign Up":

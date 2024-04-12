@@ -8,6 +8,7 @@
     <ContentPage.Content>
         
         <StackLayout>
+            <!-- Grid for header -->
             <Grid BackgroundColor="#8BC34A" Padding="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
@@ -22,11 +23,12 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Image Source="menu.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="Center"  />
+                <!-- Image for menu icon -->
+                <!--<Image Source="menu.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="Center"  />-->
 
                 <!-- Picker for Menu -->
                 <Picker Grid.Row="0" Grid.Column="1" Title="Menu" SelectedIndexChanged="OnMenuItemSelected">
-                    <!---->
+                    <!-- Menu options -->
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Home</x:String>
@@ -34,6 +36,7 @@
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
+                <!-- Placeholder for other content -->
                 <Frame Grid.Column="6" HeightRequest="30" WidthRequest="30" BackgroundColor="#8BC34A" CornerRadius="400" Padding="0" Margin="10,0,0,0">
                     <Image Source="Designer.png"></Image>
                 </Frame>
@@ -41,26 +44,25 @@
                 <Label x:Name="LoggedinTxt" Grid.Column="4" Grid.ColumnSpan="2" FontSize="20" FontAttributes="Italic" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center"/>
             </Grid>
 
-
-
-
-            <!-- Your existing ListView goes here -->
+            <!-- ListView for displaying recipes -->
             <ListView x:Name="RecipesListView"
-          BackgroundColor="Transparent"
-          SeparatorVisibility="None"
+                      BackgroundColor="Transparent"
+                      SeparatorVisibility="None"
                       ItemSelected="OnRecipeSelected">
-           <!--ItemSelected="OnRecipeSelected"-->
-    <ListView.ItemTemplate>
-        <DataTemplate>
-            <ViewCell>
-                <StackLayout Padding="10">
-                    <Label Text="{Binding Name}" FontSize="20" />
-                    <Label Text="{Binding Description}" FontSize="14" TextColor="Gray" />
-                </StackLayout>
-            </ViewCell>
-        </DataTemplate>
-    </ListView.ItemTemplate>
-</ListView>
+                <!-- Template for each recipe item -->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <!-- Display recipe name -->
+                                <Label Text="{Binding Name}" FontSize="20" />
+                                <!-- Display recipe description -->
+                                <Label Text="{Binding Description}" FontSize="14" TextColor="Gray" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
         </StackLayout>
     </ContentPage.Content>
