@@ -33,8 +33,8 @@ namespace CookBook
             { 
                 string name = await userInfo.GetFirstName(emailText, pass);
                 //if user exists take them to homepage
-                await Navigation.PushAsync(new HomePage()); //HomePage(true,name)
-                //@Utsav - Modified code here, I was getting errors. 
+                await Navigation.PushAsync(new HomePage(true, name));
+                
             }
             else
             {

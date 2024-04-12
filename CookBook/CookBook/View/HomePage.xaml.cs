@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using CookBook.Model;
 using CookBook.View;
+using Xamarin.Essentials;
 
 namespace CookBook
 {
@@ -14,6 +15,29 @@ namespace CookBook
         {
             InitializeComponent();
             LoadSampleRecipes();
+            var device = DeviceInfo.DeviceType.ToString();
+            var deviceModel = DeviceInfo.Model.ToString();
+            DeviceInfoTxt.Text = device + " " + deviceModel;
+        }
+        public HomePage(bool isLoggedin, string name)
+        {
+            InitializeComponent();
+            LoadSampleRecipes();
+            LoggedinFinder(isLoggedin, name); //method to check if loggedin
+            var device = DeviceInfo.DeviceType.ToString();
+            var deviceModel = DeviceInfo.Model.ToString();
+            DeviceInfoTxt.Text = device + " " + deviceModel;
+
+        }
+
+        public void LoggedinFinder(bool isloggedin, string name)
+        {
+            name = name.ToUpper();
+            if (isloggedin)
+            {
+                LoggedInTxt.Text = "Hello! " + name;
+
+            }
         }
 
         private void LoadSampleRecipes()
